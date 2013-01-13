@@ -159,8 +159,9 @@ public class MainActivity extends Activity
 		}
 		//検出されたkeypointを表示
 		final KeyPoint keyPointArray[] = keypoints.toArray();
+		Scalar color = new Scalar(0xFF0000);
 		for(KeyPoint key:keyPointArray){
-		    Core.circle(inputFrame, key.pt, 10, new Scalar(0xFF0000));
+		    Core.circle(inputFrame, key.pt, 10, color);
 		}
 		if(keyPointArray.length < 4) return inputFrame;
 		
@@ -178,7 +179,6 @@ public class MainActivity extends Activity
 			final int matchSize = matchArray.length;
 			ArrayList<Point> srcArray = new ArrayList<Point>();
 			ArrayList<Point> dstArray = new ArrayList<Point>();
-			
 			for(int i = 0;i < matchSize;i++){
 				Point src = new Point();
 				src.x = keyPointArray[matchArray[i].queryIdx].pt.x;
